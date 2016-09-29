@@ -1,0 +1,5 @@
+---
+
+- include: gitlab_server.yml
+
+- include: gitlab_runners.yml
