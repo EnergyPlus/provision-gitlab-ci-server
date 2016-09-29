@@ -1,0 +1,10 @@
+---
+
+## Server Inventory to be used with local VM using Vagrant.
+- name: gitlab
+  ip: 172.32.120.11
+  box: centos/7
+
+- name: gitlab-runner-1
+  ip: 172.32.120.12
+  box: centos/7
