@@ -3,12 +3,11 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # folders with ansible roles
-rolesGitlab="${SCRIPT_DIR}/../roles"
-rolesSServer="${SCRIPT_DIR}/../roles/support_server"
-rolesAllHosts="${SCRIPT_DIR}/../roles/all_hosts"
-
+rolesDir="${SCRIPT_DIR}/../roles"
+externalAnsibleRoles="/Users/agprado/Projects/NRG/AnalyticsCluster/AnsibleAllHostsRoles"
 # Ansible env var with roles paths
-export ANSIBLE_ROLES_PATH=${rolesGitlab}
+export ANSIBLE_ROLES_PATH=${rolesDir}:${externalAnsibleRoles}
+
 
 # Ansible config location
 export ANSIBLE_CONFIG=${SCRIPT_DIR}/ansible.cfg
