@@ -34,24 +34,24 @@ nfs_exports:
 nfs_mount_client_ops: "nfs rw,sync,hard,intr 0 2"
 
 # SSL Configuration.
-# gitlab_redirect_http_to_https: "true"
-# gitlab_ssl_certificate: "/etc/gitlab/ssl/{{ gitlab_fqdn }}.crt"
-# gitlab_ssl_certificate_key: "/etc/gitlab/ssl/{{ gitlab_fqdn }}.key"
+gitlab_redirect_http_to_https: "true"
+gitlab_ssl_certificate: "/etc/gitlab/ssl/{{ gitlab_fqdn }}.crt"
+gitlab_ssl_certificate_key: "/etc/gitlab/ssl/{{ gitlab_fqdn }}.key"
 
 
 # SSL Self-signed Certificate Configuration.
-# gitlab_create_self_signed_cert: true
-# gitlab_self_signed_cert_subj: "/C=US/ST=Missouri/L=Saint Louis/O=IT/CN=gitlab"
+gitlab_create_self_signed_cert: true
+gitlab_self_signed_cert_subj: "/C=US/ST=Texas/L=Houston/O=IT/CN=gitlab"
 
 # LDAP Configuration.
-gitlab_ldap_enabled: "false"
-# gitlab_ldap_host: "example.com"
-# gitlab_ldap_port: "389"
-# gitlab_ldap_uid: "sAMAccountName"
-# gitlab_ldap_method: "plain"
-# gitlab_ldap_bind_dn: "CN=cent,CN=Users,DC=example,DC=com"
-# gitlab_ldap_password: "password"
-# gitlab_ldap_base: "DC=example,DC=com"
+gitlab_ldap_enabled: "true"
+gitlab_ldap_host: "172.32.120.10"
+gitlab_ldap_port: "389"
+gitlab_ldap_uid: "cent"
+gitlab_ldap_method: "plain"
+gitlab_ldap_bind_dn: "CN=cent,DC=example,DC=com"
+gitlab_ldap_password: "12345678"
+gitlab_ldap_base: "DC=example,DC=com"
 
 # Probably best to leave this as the default, unless doing testing.
 # gitlab_restart_handler_failed_when: 'gitlab_restart.rc != 0'
