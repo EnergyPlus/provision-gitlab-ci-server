@@ -2,8 +2,36 @@
 
 # fully qualified domain name: your.gitlab.domain.example.com
 gitlab_fqdn: gitlab
-# gitlab_external_url: "https://{{ gitlab_fqdn }}/"
-# gitlab_git_data_dir: "/var/opt/gitlab/git-data"
+gitlab_external_url: "https://{{ gitlab_fqdn }}/"
+gitlab_git_data_dir: "/var/opt/gitlab/git-data"
+
+## NFS Configuration
+# NFS server Fully Qualified Domain Name (IP is also valid)
+nfs_server: 172.32.120.10
+
+# Folder/s user and group
+nfs_client_owner: root
+nfs_client_group: root
+
+# defaults file for nfs-client
+nfs_exports:
+  # Git repository data. This will account for a large portion of your data
+  - client: /var/opt/gitlab/git-data
+    server: /opt/gitlab/git-data
+  # SSH authorized_keys file and keys used to import repositories from some other Git services
+  - client: /var/opt/gitlab/.ssh
+    server: /opt/gitlab/.ssh
+  # User uploaded attachments
+  - client: /var/opt/gitlab/gitlab-rails/uploads
+    server: /opt/gitlab/gitlab-rails/uploads
+  # Build artifacts, GitLab Pages, LFS objects, temp files, etc. If you're using LFS this may also account for a large portion of your data
+  - client: /var/opt/gitlab/gitlab-rails/shared
+    server: /opt/gitlab/gitlab-rails/shared
+  # Gitlab-ci build traces
+  - client: /var/opt/gitlab/gitlab-ci/builds
+    server: /opt/gitlab/gitlab-ci/builds
+
+nfs_mount_client_ops: "nfs rw,sync,hard,intr 0 2"
 
 # SSL Configuration.
 # gitlab_redirect_http_to_https: "true"
@@ -16,12 +44,12 @@ gitlab_fqdn: gitlab
 # gitlab_self_signed_cert_subj: "/C=US/ST=Missouri/L=Saint Louis/O=IT/CN=gitlab"
 
 # LDAP Configuration.
-# gitlab_ldap_enabled: "false"
+gitlab_ldap_enabled: "false"
 # gitlab_ldap_host: "example.com"
 # gitlab_ldap_port: "389"
 # gitlab_ldap_uid: "sAMAccountName"
 # gitlab_ldap_method: "plain"
-# gitlab_ldap_bind_dn: "CN=Username,CN=Users,DC=example,DC=com"
+# gitlab_ldap_bind_dn: "CN=cent,CN=Users,DC=example,DC=com"
 # gitlab_ldap_password: "password"
 # gitlab_ldap_base: "DC=example,DC=com"
 
