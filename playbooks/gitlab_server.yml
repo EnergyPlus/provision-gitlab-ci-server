@@ -5,7 +5,6 @@
     - gitlab-server
   become: yes
   roles:
-    - nfs-client
     - gitlab
   tags:
     - gitlab-server
